@@ -74,3 +74,45 @@
     @apply bg-background text-foreground;
   }
 }
+
+* {
+  scroll-behavior: smooth;
+ }
+.container {
+  @apply xl:w-[1280px] w-full max-xl:px-[20px] max-md:px-[10px] mx-auto
+}
+
+.heading {
+  @apply xl:text-xl font-semibold
+}
+.articleHeading {
+  @apply font-semibold line-clamp-2 max-md:text-sm max-md:leading-4
+}
+.backgroundColor {
+  @apply bg-lightColor dark:bg-darkColor
+}
+
+.leftbutton{
+  top: 43.5%;
+  left: -3.8%;
+}
+.rightbutton{
+  top: 43.5%;
+  right: -4%;
+}
+
+  /** Sroll */ 
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: hsl(var(--secondary));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--secondary-foreground));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #eb5f5f;
+  }

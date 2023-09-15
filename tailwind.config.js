@@ -16,7 +16,14 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        "400": "400px"
+      },
       colors: {
+        lightColor: '#F5F5F5',
+        darkColor: '#262626',
+        darkerColor: '#171717',
+        thirth: '#FF7070',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
