@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/components/providers/themeProviders'
+import Header from '@/components/layout/Header'
+import NavAside from '@/components/layout/NavAside'
 const font = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '800', '900'] })
 
 
@@ -16,6 +18,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+  
   return (
     <html lang="tr" suppressHydrationWarning>
       <body className={cn(font.className, "bg-white dark:bg-darkerColor text-darkColor dark:text-white overflow-x-hidden")}>
@@ -25,7 +29,11 @@ export default function RootLayout({
         enableSystem={true}
         storageKey='theme'
         >
-        {children}
+          <Header/>
+          <div className='flex container h-[calc(100vh_-_101px)]'>
+          <NavAside/>
+          {children}
+          </div>
         </ThemeProvider>
         </body>
     </html>
