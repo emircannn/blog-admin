@@ -16,6 +16,7 @@ const NavAside = () => {
         {label: 'Kategoriler', href: '/kategoriler', icon: <Boxes/>, user: "Admin"},
         {label: 'Yorumlar', href: '/yorumlar', icon: <MessageCircle/>, user: "Admin"},
         {label: 'Profil', href: '/profil', icon: <User2/>, user: "Editor"},
+        {label: 'Editörler', href: '/editorler', icon: <User2/>, user: "Admin"},
         {label: 'Ayarlar', href: '/ayarlar', icon: <Settings2/>, user: "Admin"},
     ]
 
