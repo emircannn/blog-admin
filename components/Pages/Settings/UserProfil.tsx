@@ -1,4 +1,5 @@
 
+import { ChangePassword } from "./ChangePassword"
 import { EditProfile } from "./EditProfile"
 
 const UserProfil = () => {
@@ -13,7 +14,10 @@ const UserProfil = () => {
                 <span className="opacity-75">yasar.emircann@gmail.com</span>
             </div>
 
+            <div className="flex items-center gap-2">
             <EditProfile/>
+            <ChangePassword/>
+            </div>
         </div>
 
         <div className="flex flex-col gap-1">

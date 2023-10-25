@@ -6,7 +6,8 @@ import { ThemeProvider } from '@/components/providers/themeProviders'
 import Header from '@/components/layout/Header'
 import NavAside from '@/components/layout/NavAside'
 const font = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '800', '900'] })
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export const metadata: Metadata = {
   title: 'Create Next App',

@@ -1,6 +1,6 @@
-import { Button } from '../ui/button'
+import { Button } from '../../ui/button'
 import Link from 'next/link'
-import Article from '../Article'
+import Article from '../../Article'
 
 const ActualPage = () => {
   return (
@@ -9,7 +9,7 @@ const ActualPage = () => {
             <h1 className="heading">Aktüel</h1>
 
                 <Button>
-                    <Link href='/ekle'>
+                    <Link href='/aktuel/ekle'>
                     Yazı Ekle
                     </Link>
                 </Button>

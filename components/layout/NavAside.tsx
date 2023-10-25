@@ -1,5 +1,5 @@
 'use client'
-import { Boxes, FileType, MessageCircle, Newspaper, Settings2, Type, User2 } from 'lucide-react'
+import { Boxes, FileType, GalleryThumbnails, MessageCircle, Newspaper, Settings2, Type, User2 } from 'lucide-react'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 
@@ -17,6 +17,7 @@ const NavAside = () => {
         {label: 'Yorumlar', href: '/yorumlar', icon: <MessageCircle/>, user: "Admin"},
         {label: 'Profil', href: '/profil', icon: <User2/>, user: "Editor"},
         {label: 'Editörler', href: '/editorler', icon: <User2/>, user: "Admin"},
+        {label: 'Slider', href: '/slider', icon: <GalleryThumbnails/>, user: "Admin"},
         {label: 'Ayarlar', href: '/ayarlar', icon: <Settings2/>, user: "Admin"},
     ]
 

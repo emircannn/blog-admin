@@ -116,3 +116,55 @@
   ::-webkit-scrollbar-thumb:hover {
     background-color: #eb5f5f;
   }
+
+  .ck.ck-reset.ck-editor.ck-rounded-corners {
+    height: 100% !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+    border: none !important;
+  }
+  .ck.ck-editor__main {
+    height: calc(100% - 39.42px) !important;
+    border: none !important;
+    background-color: hsl(var(--secondary));
+  }
+  .ck.ck-editor__top.ck-reset_all .ck.ck-sticky-panel .ck.ck-sticky-panel__content .ck.ck-toolbar.ck-toolbar_grouping {
+    background-color: hsl(var(--secondary));
+    border: none !important;
+  }
+  .ck-icon_inherit-color{
+    color: hsl(var(--primary)) !important;
+  }
+  .ck.ck-button.ck-off.ck-button_with-text.ck-dropdown__button{
+    color: hsl(var(--primary)) !important;
+    transition: all 0.3s ease;
+  }
+  .ck.ck-button.ck-off.ck-button_with-text.ck-dropdown__button:hover{
+    opacity: 70%;
+  }
+  .ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline p {
+    height: 100% !important;
+  }
+  .ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+    min-height: 100% !important;
+    background-color: hsl(var(--secondary));
+    border-top: 1px solid hsl(var(--secondary-foreground)); 
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+  }
+  .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused {
+    height: 100% !important;
+    background-color: hsl(var(--secondary));
+    border-top: 1px solid hsl(var(--secondary-foreground)); 
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+  }
+
+  .ck.ck-button.ck-on   {
+    background-color: hsl(var(--primary-foreground)) !important;
+  }
+  .ck.ck-button.ck-off:hover   {
+    background-color: hsl(var(--primary-foreground)) !important;
+  }

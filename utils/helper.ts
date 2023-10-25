@@ -2,8 +2,8 @@
 interface ImageUploadHandler {
     (
       event: React.ChangeEvent<HTMLInputElement> | any,
-      setPhoto: React.Dispatch<React.SetStateAction<File | undefined>>,
-      setPhotoPre: React.Dispatch<React.SetStateAction<string | ArrayBuffer | null>>
+      setPhoto: React.Dispatch<React.SetStateAction<File | any>>,
+      setPhotoPre: React.Dispatch<React.SetStateAction<string | ArrayBuffer | null | any>>
     ): void;
   }
   

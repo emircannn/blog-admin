@@ -10,7 +10,7 @@ const ArticlesPage = () => {
             <h1 className="heading">Yazılar</h1>
 
                 <Button>
-                    <Link href='/ekle'>
+                    <Link href='/yazi/ekle'>
                     Yazı Ekle
                     </Link>
                 </Button>
