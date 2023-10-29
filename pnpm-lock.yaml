@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@ckeditor/ckeditor5-editor-classic':
+    specifier: ^40.0.0
+    version: 40.0.0
   '@ckeditor/ckeditor5-react':
     specifier: ^6.1.0
     version: 6.1.0(@ckeditor/ckeditor5-core@39.0.1)(@ckeditor/ckeditor5-engine@39.0.1)(@ckeditor/ckeditor5-utils@39.0.1)(@ckeditor/ckeditor5-watchdog@39.0.1)(react@18.2.0)
@@ -184,6 +187,17 @@ packages:
       lodash-es: 4.17.21
     dev: false
 
+  /@ckeditor/ckeditor5-clipboard@40.0.0:
+    resolution: {integrity: sha512-Xtgjb4ZYa40XHqwQo25X6rA4Job0kgFvocNRMBH7CNrN5h4lJwJwVXlY9HSXvXPY0TBaBBS1HcMvB+sf5DYXeg==}
+    dependencies:
+      '@ckeditor/ckeditor5-core': 40.0.0
+      '@ckeditor/ckeditor5-engine': 40.0.0
+      '@ckeditor/ckeditor5-ui': 40.0.0
+      '@ckeditor/ckeditor5-utils': 40.0.0
+      '@ckeditor/ckeditor5-widget': 40.0.0
+      lodash-es: 4.17.21
+    dev: false
+
   /@ckeditor/ckeditor5-cloud-services@39.0.1:
     resolution: {integrity: sha512-rmjYzCxjaHz45InWJEEDbYKbmmPBYKUGEvaVr2z6f1NJ2jZ6RoMQ1VZN4IeX1fLYWyGmp6b5gdua5cNK1EXy4A==}
     engines: {node: '>=16.0.0', npm: '>=5.7.1'}
@@ -200,11 +214,26 @@ packages:
       lodash-es: 4.17.21
     dev: false
 
+  /@ckeditor/ckeditor5-core@40.0.0:
+    resolution: {integrity: sha512-8xoSDOc9/35jEikKtYbdYmBxPop7i/JYSkkZmJYbZ8XxkjQiIMAUYOJVdNntfuLGazU+THmutieEA/x3ISme4g==}
+    dependencies:
+      '@ckeditor/ckeditor5-engine': 40.0.0
+      '@ckeditor/ckeditor5-utils': 40.0.0
+      lodash-es: 4.17.21
+    dev: false
+
   /@ckeditor/ckeditor5-editor-classic@39.0.1:
     resolution: {integrity: sha512-d+mQk8MbL/lymnq+4MhWQm4eMBJ5JOKo8gOyFHNCkGvKKNpwHqjs2zmzdelNMTkXXQtCsevNJSLbRcV+XXwlqg==}
     engines: {node: '>=16.0.0', npm: '>=5.7.1'}
     dependencies:
       ckeditor5: 39.0.1
+      lodash-es: 4.17.21
+    dev: false
+
+  /@ckeditor/ckeditor5-editor-classic@40.0.0:
+    resolution: {integrity: sha512-tCI359WG1VmsrmqRkvBcbXWQ2cDml51l+M2fyzcJjMHJyjEqvrkrOiCKdO/66eRcD1UA6xQYtZzE/dxm7hkZWw==}
+    dependencies:
+      ckeditor5: 40.0.0
       lodash-es: 4.17.21
     dev: false
 
@@ -216,6 +245,13 @@ packages:
       lodash-es: 4.17.21
     dev: false
 
+  /@ckeditor/ckeditor5-engine@40.0.0:
+    resolution: {integrity: sha512-zauOXFudE1B94RSziWWojdpqGprSo4rKwW3KLU6nfaz9Kq9RZkcP/TW5ADE0DxC2jWUMeItVE/3U8ES5fZ0hqQ==}
+    dependencies:
+      '@ckeditor/ckeditor5-utils': 40.0.0
+      lodash-es: 4.17.21
+    dev: false
+
   /@ckeditor/ckeditor5-enter@39.0.1:
     resolution: {integrity: sha512-4gF0CFbEgZowQGmcyKP9KKBKOk67bdQIP5y71QvDgP6rUdbOQ5NDAS3FKis6a2Aubhtg92BO4QC6tZADPiW3hA==}
     engines: {node: '>=16.0.0', npm: '>=5.7.1'}
@@ -223,6 +259,14 @@ packages:
       '@ckeditor/ckeditor5-core': 39.0.1
       '@ckeditor/ckeditor5-engine': 39.0.1
       '@ckeditor/ckeditor5-utils': 39.0.1
+    dev: false
+
+  /@ckeditor/ckeditor5-enter@40.0.0:
+    resolution: {integrity: sha512-pu8/zyQMqzMOgJbbPLbVu6znFfbgMYQwIVT7GMmWX+pZxPSBPyM+qNlmstFLwAxeki0aHCbo27gYmR1rIYGgrg==}
+    dependencies:
+      '@ckeditor/ckeditor5-core': 40.0.0
+      '@ckeditor/ckeditor5-engine': 40.0.0
+      '@ckeditor/ckeditor5-utils': 40.0.0
     dev: false
 
   /@ckeditor/ckeditor5-essentials@39.0.1:
@@ -296,6 +340,14 @@ packages:
       '@ckeditor/ckeditor5-utils': 39.0.1
     dev: false
 
+  /@ckeditor/ckeditor5-paragraph@40.0.0:
+    resolution: {integrity: sha512-j2Pm/dlu3hE08EKYvbUT9qUMyJeZtuufuZjUZaADCsVmtfFuzXlaHjIkQUvCxUeuMXQLlUpJ69OSAMzzMlJs8g==}
+    dependencies:
+      '@ckeditor/ckeditor5-core': 40.0.0
+      '@ckeditor/ckeditor5-ui': 40.0.0
+      '@ckeditor/ckeditor5-utils': 40.0.0
+    dev: false
+
   /@ckeditor/ckeditor5-paste-from-office@39.0.1:
     resolution: {integrity: sha512-KZ/CVViMyHTpNlgORngcDinpheuV+Vp3Wl9afgjvVyBE0vtJPh6mDd+6uxMgC1oZN76FfIze03HJoAMyabGQpA==}
     engines: {node: '>=16.0.0', npm: '>=5.7.1'}
@@ -330,6 +382,14 @@ packages:
       '@ckeditor/ckeditor5-utils': 39.0.1
     dev: false
 
+  /@ckeditor/ckeditor5-select-all@40.0.0:
+    resolution: {integrity: sha512-6FP/8DjKCfy9ha42hoshOj5fs13KFFRSbXcCDNFCUk/ZrvH42lz1BYw2S5uQYA9Xl6o4BUWdN+g4CVPQfpGm+Q==}
+    dependencies:
+      '@ckeditor/ckeditor5-core': 40.0.0
+      '@ckeditor/ckeditor5-ui': 40.0.0
+      '@ckeditor/ckeditor5-utils': 40.0.0
+    dev: false
+
   /@ckeditor/ckeditor5-table@39.0.1:
     resolution: {integrity: sha512-4q4nU36fM6G5zpHrtCPu5LJSmHBs9Bh7g41/rlLHljx6xIs0Ke66CIWizUP3iIce3G0lTVwqAyUTE6GsqJRmmA==}
     engines: {node: '>=16.0.0', npm: '>=5.7.1'}
@@ -348,12 +408,32 @@ packages:
       lodash-es: 4.17.21
     dev: false
 
+  /@ckeditor/ckeditor5-typing@40.0.0:
+    resolution: {integrity: sha512-c0uMXkh3kJP1wEVoh/0sLPr8Ouk4EvBuaAqSYEkrvX5wKBWAoGnUotHfrFH8wRBy25m17QbZ44N7dkA+BpuMPQ==}
+    dependencies:
+      '@ckeditor/ckeditor5-core': 40.0.0
+      '@ckeditor/ckeditor5-engine': 40.0.0
+      '@ckeditor/ckeditor5-utils': 40.0.0
+      lodash-es: 4.17.21
+    dev: false
+
   /@ckeditor/ckeditor5-ui@39.0.1:
     resolution: {integrity: sha512-6mBZNfMVSjyNb3HHyjJFwrR2rvmTuH1JSc+ebuulw5knYQmDaeCaS4tiYmOVcGGz/WcrAYRQAtSGrfZmuLesMQ==}
     engines: {node: '>=16.0.0', npm: '>=5.7.1'}
     dependencies:
       '@ckeditor/ckeditor5-core': 39.0.1
       '@ckeditor/ckeditor5-utils': 39.0.1
+      color-convert: 2.0.1
+      color-parse: 1.4.2
+      lodash-es: 4.17.21
+      vanilla-colorful: 0.7.2
+    dev: false
+
+  /@ckeditor/ckeditor5-ui@40.0.0:
+    resolution: {integrity: sha512-wnfC7eSqdN6i+nHTN83+PCByWeCPDgdQAXvf3HHBNdsJna6khKC8Oy/1eU8F+vR84unJMrPoaCMIx0qRvK3hCA==}
+    dependencies:
+      '@ckeditor/ckeditor5-core': 40.0.0
+      '@ckeditor/ckeditor5-utils': 40.0.0
       color-convert: 2.0.1
       color-parse: 1.4.2
       lodash-es: 4.17.21
@@ -369,6 +449,14 @@ packages:
       '@ckeditor/ckeditor5-ui': 39.0.1
     dev: false
 
+  /@ckeditor/ckeditor5-undo@40.0.0:
+    resolution: {integrity: sha512-kt+9Ux0RdC0OeMLp95kJW1h6d1LobOblkozU2as5VN5c20tvbXviQJuoQeJsiixmJapUmi7vvDgnVsGw9obEpQ==}
+    dependencies:
+      '@ckeditor/ckeditor5-core': 40.0.0
+      '@ckeditor/ckeditor5-engine': 40.0.0
+      '@ckeditor/ckeditor5-ui': 40.0.0
+    dev: false
+
   /@ckeditor/ckeditor5-upload@39.0.1:
     resolution: {integrity: sha512-VVVWErIHRnw5kw00t8OYLxHDgSE1ywtoy/Zih0GJVxe882jIfajPj7KdZUjylfZuPeQnp1kAIpoe+WX3scvxFQ==}
     engines: {node: '>=16.0.0', npm: '>=5.7.1'}
@@ -378,6 +466,14 @@ packages:
       '@ckeditor/ckeditor5-utils': 39.0.1
     dev: false
 
+  /@ckeditor/ckeditor5-upload@40.0.0:
+    resolution: {integrity: sha512-LutDg8zjhJu1UKInAyvVHIk8HyroETi61KS2PQTyiTQv/DmRvjSK32Xl83KprTxAvqZsiDdXe+Nl1kdAO8S2ag==}
+    dependencies:
+      '@ckeditor/ckeditor5-core': 40.0.0
+      '@ckeditor/ckeditor5-ui': 40.0.0
+      '@ckeditor/ckeditor5-utils': 40.0.0
+    dev: false
+
   /@ckeditor/ckeditor5-utils@39.0.1:
     resolution: {integrity: sha512-lQ+1h4FgUScEdk547uCzfdvajFigVt4u0mRw1m9TtJ3B2GiatwRvst8TZEuWl8aFrIHjQ/gho66QIElJi/6+CA==}
     engines: {node: '>=16.0.0', npm: '>=5.7.1'}
@@ -385,9 +481,21 @@ packages:
       lodash-es: 4.17.21
     dev: false
 
+  /@ckeditor/ckeditor5-utils@40.0.0:
+    resolution: {integrity: sha512-52UwkeGxrZWhbwWWfixKceWhF1kuDeJNAM57wqfB7GS8CzElOpJ3AELeD/L/ZkUEBGL9asqribEH3CzgTjWKPA==}
+    dependencies:
+      lodash-es: 4.17.21
+    dev: false
+
   /@ckeditor/ckeditor5-watchdog@39.0.1:
     resolution: {integrity: sha512-f5Uo0RdcbeKGs0gmBm8Y8c+Z9YgcjqX7ai4vdcw8HIEc0vCeEanPt816V53nLZ3LbPgez8LeWluR7VlzoxKO+g==}
     engines: {node: '>=16.0.0', npm: '>=5.7.1'}
+    dependencies:
+      lodash-es: 4.17.21
+    dev: false
+
+  /@ckeditor/ckeditor5-watchdog@40.0.0:
+    resolution: {integrity: sha512-bwBimEdiUCe6/1IScWhC2vomcwApkKeb804NuxX7m7QhctKaHALV+tRVG/y8Oln3qCaw3na6C4pQgaXz0qtWcQ==}
     dependencies:
       lodash-es: 4.17.21
     dev: false
@@ -402,6 +510,18 @@ packages:
       '@ckeditor/ckeditor5-typing': 39.0.1
       '@ckeditor/ckeditor5-ui': 39.0.1
       '@ckeditor/ckeditor5-utils': 39.0.1
+      lodash-es: 4.17.21
+    dev: false
+
+  /@ckeditor/ckeditor5-widget@40.0.0:
+    resolution: {integrity: sha512-3dZjAQECWMvSMQhleM6iHwG2LOTKQmir4Rf3/Vulc7Aexb/brcQ06JuNQtQsIxRBZPoaEpWFAakK1PSfxxO0Sg==}
+    dependencies:
+      '@ckeditor/ckeditor5-core': 40.0.0
+      '@ckeditor/ckeditor5-engine': 40.0.0
+      '@ckeditor/ckeditor5-enter': 40.0.0
+      '@ckeditor/ckeditor5-typing': 40.0.0
+      '@ckeditor/ckeditor5-ui': 40.0.0
+      '@ckeditor/ckeditor5-utils': 40.0.0
       lodash-es: 4.17.21
     dev: false
 
@@ -2131,6 +2251,24 @@ packages:
       '@ckeditor/ckeditor5-utils': 39.0.1
       '@ckeditor/ckeditor5-watchdog': 39.0.1
       '@ckeditor/ckeditor5-widget': 39.0.1
+    dev: false
+
+  /ckeditor5@40.0.0:
+    resolution: {integrity: sha512-pyXptFXODCyICkIaiBfWl+vqNq87CwB4IodaacUDdp+7z7szK13/vMJMWyPCQyZob+lzpakqPpj29HR5Kzy4AQ==}
+    dependencies:
+      '@ckeditor/ckeditor5-clipboard': 40.0.0
+      '@ckeditor/ckeditor5-core': 40.0.0
+      '@ckeditor/ckeditor5-engine': 40.0.0
+      '@ckeditor/ckeditor5-enter': 40.0.0
+      '@ckeditor/ckeditor5-paragraph': 40.0.0
+      '@ckeditor/ckeditor5-select-all': 40.0.0
+      '@ckeditor/ckeditor5-typing': 40.0.0
+      '@ckeditor/ckeditor5-ui': 40.0.0
+      '@ckeditor/ckeditor5-undo': 40.0.0
+      '@ckeditor/ckeditor5-upload': 40.0.0
+      '@ckeditor/ckeditor5-utils': 40.0.0
+      '@ckeditor/ckeditor5-watchdog': 40.0.0
+      '@ckeditor/ckeditor5-widget': 40.0.0
     dev: false
 
   /class-variance-authority@0.7.0:

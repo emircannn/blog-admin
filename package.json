@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-editor-classic": "^40.0.0",
     "@ckeditor/ckeditor5-react": "^6.1.0",
     "@radix-ui/react-avatar": "^1.0.3",
     "@radix-ui/react-checkbox": "^1.0.4",
