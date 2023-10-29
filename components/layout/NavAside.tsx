@@ -1,27 +1,29 @@
 'use client'
+import { AuthContext } from '@/context/AuthContext'
 import { Boxes, FileType, GalleryThumbnails, MessageCircle, Newspaper, Settings2, Type, User2 } from 'lucide-react'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
+import { useContext } from 'react'
 
 const NavAside = () => {
 
     const pathname = usePathname()
-
-    const user = 'Admin'
+    const {auth} = useContext<any>(AuthContext)
+    const user = auth?.role
 
     const navigationLink = [
         {label: 'Yazılar', href: '/', icon: <Type/>, user: 'All'},
         {label: 'Sayılar', href: '/sayilar', icon: <FileType/>, user: 'All'},
         {label: 'Aktüel', href: '/aktuel', icon: <Newspaper/>, user: 'All'},
-        {label: 'Kategoriler', href: '/kategoriler', icon: <Boxes/>, user: "Admin"},
-        {label: 'Yorumlar', href: '/yorumlar', icon: <MessageCircle/>, user: "Admin"},
-        {label: 'Profil', href: '/profil', icon: <User2/>, user: "Editor"},
-        {label: 'Editörler', href: '/editorler', icon: <User2/>, user: "Admin"},
-        {label: 'Slider', href: '/slider', icon: <GalleryThumbnails/>, user: "Admin"},
-        {label: 'Ayarlar', href: '/ayarlar', icon: <Settings2/>, user: "Admin"},
+        {label: 'Kategoriler', href: '/kategoriler', icon: <Boxes/>, user: "ADMIN"},
+        {label: 'Yorumlar', href: '/yorumlar', icon: <MessageCircle/>, user: "ADMIN"},
+        {label: 'Profil', href: `/profil/${auth?.username}`, icon: <User2/>, user: "EDITOR"},
+        {label: 'Editörler', href: '/editorler', icon: <User2/>, user: "ADMIN"},
+        {label: 'Slider', href: '/slider', icon: <GalleryThumbnails/>, user: "ADMIN"},
+        {label: 'Ayarlar', href: '/ayarlar', icon: <Settings2/>, user: "ADMIN"},
     ]
 
-    if (pathname.includes('/oturum')) {
+    if (pathname.includes('/oturum') || !auth) {
         return null;
     }
 

@@ -1,9 +1,9 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import EditorLogin from "./Auth/EditorLogin"
-import AdminLogin from "./Auth/AdminLogin"
 import Register from "./Auth/Register"
+import AdminLogin from "./Auth/AdminLogin"
+import EditorLogin from "./Auth/EditorLogin"
 
-const Page = () => {
+const LoginPage = () => {
   return (
     <main className="h-[calc(100vh_-_101px)] flex items-center justify-center w-full">
         <Tabs  defaultValue="admin" className="w-[400px]">
@@ -20,4 +20,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default LoginPage

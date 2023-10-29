@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/providers/AuthProvider.jsx", "components/layout/Header.tsx", "components/layout/NavAside.tsx", "app/(auth)/oturum/Auth/AdminLogin.jsx", "app/(auth)/oturum/Auth/EditorLogin.jsx"],
   "exclude": ["node_modules"]
 }

@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation"
+import AuthProvider from "@/components/providers/AuthProvider"
 import { ReactNode } from "react"
 
 interface Props {
@@ -7,16 +7,10 @@ interface Props {
 
 const layout: React.FC<Props> = ({children}) => {
 
-    const user = true
-
-    if(!user) {
-      redirect('/oturum')
-    }
-
   return (
-    <>
+    <AuthProvider>
     {children}
-    </>
+    </AuthProvider>
   )
 }
 
