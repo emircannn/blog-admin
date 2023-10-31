@@ -1,21 +1,27 @@
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react"
 import Link from "next/link"
-import { EditSocialMedia } from "./EditSocialMedia"
+import EditSocialMedia from "./EditSocialMedia"
 
-const Social = () => {
+interface Props {
+    data: User | undefined
+  }
+  
+  const Social: React.FC<Props> = ({
+    data
+  }) => {
 
     const socialMedia = [
-        {username: 'emicann', icon: <Twitter/>, url: 'https://twitter.com/', isUsername: true},
-        {username: 'Emircan', icon: <Facebook/>, url: 'https://facebook.com/', isUsername: false},
-        {username: 'emircan', icon: <Instagram/>, url: 'https://instagram.com/', isUsername: true},
-        {username: 'emircan', icon: <Youtube/>, url: 'https://youtube.com/', isUsername: false},
+        {username: data?.twitter ? data.twitter : 'Giriniz', icon: <Twitter/>, url: data?.twitterLink ? data.twitterLink : '/', isUsername: true},
+        {username: data?.facebook ? data.facebook: 'Giriniz', icon: <Facebook/>, url: data?.facebookLink ? data.facebookLink : '/', isUsername: false},
+        {username: data?.instagram ? data.instagram: 'Giriniz', icon: <Instagram/>, url: data?.instagramLink ? data.instagramLink : '/', isUsername: true},
+        {username: data?.youtube ? data.youtube: 'Giriniz', icon: <Youtube/>, url: data?.youtubeLink ? data.youtubeLink : '/', isUsername: false},
     ]
 
   return (
     <div className="flex flex-col gap-3 w-full">
         <div className="flex items-center justify-between">
         <h3 className="articleHeading">Sosyal Medya</h3>
-        <EditSocialMedia/>
+        <EditSocialMedia data={data}/>
         </div>
 
         <div className="grid grid-cols-4 gap-2">

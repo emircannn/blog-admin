@@ -1,28 +1,36 @@
 
-import { ChangePassword } from "./ChangePassword"
-import { EditProfile } from "./EditProfile"
+import ChangePassword from "./ChangePassword"
+import EditProfile from "./EditProfile"
 
-const UserProfil = () => {
+interface Props {
+  data: User | undefined
+}
+
+const UserProfil: React.FC<Props> = ({
+  data
+}) => {
   return (
     <div className="pl-7 flex flex-col gap-3">
         <div className="flex items-center justify-between">
             <div className="flex flex-col">
             <div className="flex items-center gap-3">
-                <h1 className="articleHeading">Emircan Yaşar</h1>
-                <span className="opacity-75 text-sm">@emircann</span>
+                <h1 className="articleHeading">{data?.name}</h1>
+                <span className="opacity-75 text-sm">@{data?.username}</span>
             </div>
-                <span className="opacity-75">yasar.emircann@gmail.com</span>
+                <span className="opacity-75">{data?.email}</span>
             </div>
 
             <div className="flex items-center gap-2">
-            <EditProfile/>
-            <ChangePassword/>
+            <EditProfile data={data}/>
+            <ChangePassword data={data?.username}/>
             </div>
         </div>
 
         <div className="flex flex-col gap-1">
         <h2 className="font-semibold">Hakkımda</h2>
-        <p className="text-sm opacity-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse temporibus maxime incidunt accusantium, dicta quae! Ad debitis dolore a ex autem? Quos temporibus cum enim.</p>
+        <p className="text-sm opacity-75">
+          {data?.about ? data.about : 'Henüz hakkımda yazısı girmediniz...'}
+        </p>
         </div>
     </div>
   )

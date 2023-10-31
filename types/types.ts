@@ -1,0 +1,22 @@
+interface User {
+    id: string,
+    name : string,
+    username : string,
+    email : string,
+    image : string | null,
+    coverImage : string | null,
+    password : string | null,
+    about : string | null,
+    twitter : string | null,
+    twitterLink : string | null,
+    instagramLink : string | null,
+    instagram : string | null,
+    facebook : string | null,
+    facebookLink : string | null,
+    youtube : string | null,
+    youtubeLink : string | null,
+    role : string,
+    isConfirm: boolean
+    createdAt : string,
+    updatedAt : string,
+}
