@@ -46,7 +46,7 @@ const Combobox : React.FC<Props> = ({
           className="w-[200px] justify-between"
         >
           {value
-            ? categories.find((category) => category.label.toLocaleLowerCase() === value)?.label
+            ? categories?.find((category) => category?.label?.toLocaleLowerCase() === value)?.label
             : "Kategori seç..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -56,13 +56,13 @@ const Combobox : React.FC<Props> = ({
           <CommandInput placeholder="Kategori Ara..." />
           <CommandEmpty>Kategori Bulunamadı.</CommandEmpty>
           <CommandGroup>
-            {categories.map((category) => (
+            {categories?.map((category) => (
               <CommandItem
-                key={category.value}
-                value={category.label}
+                key={category?.value}
+                value={category?.label}
                 onSelect={(currentValue) => {
                     if (setValue) {
-                        setValue(currentValue.toLocaleLowerCase() === value ? "" : currentValue);
+                        setValue(currentValue?.toLocaleLowerCase() === value ? "" : currentValue);
                       }
                   setOpen(false)
                 }}
@@ -70,10 +70,10 @@ const Combobox : React.FC<Props> = ({
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
-                    value === category.label.toLocaleLowerCase() ? "opacity-100" : "opacity-0"
+                    value === category?.label?.toLocaleLowerCase() ? "opacity-100" : "opacity-0"
                   )}
                 />
-                {category.label}
+                {category?.label}
               </CommandItem>
             ))}
           </CommandGroup>

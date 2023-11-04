@@ -1,4 +1,5 @@
 
+import Confirm from "@/components/AlertDialog"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
 import axios from "axios"
@@ -50,12 +51,20 @@ const Writer: React.FC<RequestProps> = ({
             </div>
 
             <div className="w-full !h-[60%] md:h-1/2 pt-6 md:pt-12 px-4 pb-4 flex flex-col justify-between text-center">
-                <p className="line-clamp-1 font-semibold text-sm sm:text-base hover:underline duration-300">{data?.name}</p>
+                <p className="line-clamp-1 w-full font-semibold text-sm sm:text-base hover:underline duration-300">{data?.name}</p>
                 <p className="line-clamp-1 font-semibold text-xs sm:text-sm opacity-60">@{data?.username}</p>
 
-                <Button variant='destructive' onClick={handleDelete}>
-                    Sil
-                </Button>
+                <Confirm
+                    action={handleDelete}
+                    button={
+                    <Button variant='destructive'>
+                        Sil
+                    </Button>
+                    }
+                    title="Bu editörü silmek istediğinize emin misiniz?"
+                    desc={` ${data?.name} editörünü silerseniz bu editöre ait tüm yazılar silinecektir.`}
+                    />
+                
             </div>
         </div>
   )

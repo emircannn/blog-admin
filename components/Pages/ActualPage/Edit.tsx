@@ -6,38 +6,35 @@ import { handleSelectImage } from "@/utils/helper"
 import { ImageIcon } from "lucide-react"
 import Image from "next/image"
 import { useContext, useEffect, useState } from "react"
-import Combobox from "./Select"
 import dynamic from "next/dynamic"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
-import axios from "axios"
 import { AuthContext } from "@/context/AuthContext"
-const Editor = dynamic(() => import('../../../Editor'), { 
+import axios from "axios"
+import { useParams } from "next/navigation"
+const Editor = dynamic(() => import('../../Editor'), { 
   ssr: false 
 });
 
-const AddPage = () => {
-    const [image, setImage] = useState('')
-    const [imagePre, setImagePre] = useState('')
-    const [value, setValue] = useState("")
-    const [selectedCategory, setSelectedCategory] = useState("")
-    const [text, setText] = useState("")
-    const [note, setNote] = useState("")
-    const [name, setName] = useState("")
-    const [loading, setLoading] = useState(false)
-
+const EditPage = () => {
+  const [_text, setText_] = useState<any>()
+    const [image, setImage] = useState<any>()
+    const [name, setName] = useState<any>()
+    const [imagePre, setImagePre] = useState<any>()
+    const [text, setText] = useState<any>()
+    const [note, setNote] = useState<any>()
     const { toast } = useToast()
     const {auth} = useContext<any>(AuthContext)
-    const [data, setData] = useState<CategoryType[]>([])
+    const params = useParams()
 
     useEffect(() => {
       const getData = async() => {
         try {
-          const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}category/getAll`)
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}actual/getText?seo=${params.seo}`)
           if(res.data.error) {
             toast({title : res.data.message})
           } else {
-            setData(res.data.data)
+            setText_(res.data.data)
           }
         } catch (error: any) {
           toast({title : error.response.data.message.split(':')[1] || error.response.data.message})
@@ -45,58 +42,38 @@ const AddPage = () => {
       }
 
       getData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const categories = 
-        data?.map((_, i) => (
-          {
-            value: _.id,
-            label: _.name,
-          }
-        ))
-
     useEffect(() => {
-        if (value) {
-            const category = categories.find((c) => c?.label?.toLocaleLowerCase() === value.toLocaleLowerCase());
-            if (category) {
-                setSelectedCategory(category?.value);
-            }
-        }
-    }, [categories, value]);
+      if(_text) {
+        setText(_text?.text)
+        setNote(_text?.note)
+      }
+    }, [_text])
+
 
     const handleSubmit = async() => {
       try {
-        setLoading(false)
-        if (imagePre && selectedCategory && text && name) {
           const token = localStorage.getItem("token")
           const formData = new FormData()
-          formData.append('name', name)
+          name && formData.append('name', name)
           formData.append('textImage', image)
           formData.append('text', text)
           formData.append('note', note)
-          formData.append('user', auth?.id)
-          formData.append('category', selectedCategory)
-          const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}article/create`,formData,{
+          formData.append('user', _text.userId)
+          const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}actual/update?seo=${params.seo}`,formData,{
             headers: {
                 'Authorization': `Bearer ${token}`,
             },
             })
 
             if(res.data.error) {
-              setLoading(false)
               toast({title : res.data.message})
             } else {
-              setLoading(false)
               toast({title : res.data.message})
-              window.location.reload()
+              window.location.replace('/')
             }
-        } else {
-          setLoading(false)
-          toast({title : 'Resim, Kategori, Yazı ve Başlık alanları zorunludur'})
-        }
       } catch (error: any) {
-        setLoading(false)
         toast({title : error.response.data.message.split(':')[1] || error.response.data.message})
       }
     }
@@ -105,7 +82,7 @@ const AddPage = () => {
     <div className="p-8 flex flex-col gap-3 w-full max-h-screen overflow-y-auto">
         <div className="flex flex-col items-center gap-4">
             <div className="w-full h-[260px] relative rounded-xl border border-primary overflow-hidden">
-                {image && <Image alt="" src={imagePre} fill quality={100} priority className="object-cover"/>}
+                <Image alt="" src={imagePre ? imagePre : _text?.image} fill quality={100} priority className="object-cover"/>
                 <span className={`absolute w-full h-full z-10 bg-black/50 flex items-center justify-center 
                 flex-col gap-2 ${image && 'opacity-0'} hover:opacity-100 duration-300 cursor-pointer`}>
                     <ImageIcon/>
@@ -123,18 +100,7 @@ const AddPage = () => {
                     <Label htmlFor="title">
                     Başlık
                     </Label>
-                    <Input id="title" type="text" placeholder="Yazı Başlığı" onChange={(e) => setName(e.target.value)}/>
-                </div>
-                <div className="shrink-0">
-                <div className="flex flex-col gap-3 w-full">
-                    <Label>
-                        Kategori
-                    </Label>
-                    <Combobox
-                    value={value}
-                    setValue={setValue}
-                    categories={categories}/>
-                </div>
+                    <Input id="title" type="text" placeholder={_text?.title} onChange={(e) => setName(e.target.value)}/>
                 </div>
             </div>
         </div>
@@ -163,12 +129,12 @@ const AddPage = () => {
         </div>
 
         <div className="flex justify-end">
-          <Button onClick={handleSubmit} disabled={loading}>
-                  {loading ? 'Yükleniyor...' : 'Kaydet'}
-            </Button>
+          <Button onClick={handleSubmit}>
+            Güncelle
+          </Button>
         </div>
     </div>
   )
 }
 
-export default AddPage
+export default EditPage

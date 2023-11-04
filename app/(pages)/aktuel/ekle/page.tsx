@@ -1,7 +1,7 @@
 'use client'
 
 import ClientOnly from '@/components/ClientOnly'
-import AddPage from '../../../../components/Pages/ActualPage/AddPage'
+import AddPage from '@/components/Pages/ActualPage/AddPage'
 
 const Page = () => {
   return (

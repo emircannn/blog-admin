@@ -5,59 +5,130 @@ import { Label } from "@/components/ui/label"
 import { handleSelectImage } from "@/utils/helper"
 import { ImageIcon } from "lucide-react"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 import { Button } from "@/components/ui/button"
 import Combobox from "./Add/Select"
+import { useToast } from "@/components/ui/use-toast"
+import { AuthContext } from "@/context/AuthContext"
+import axios from "axios"
+import { useParams } from "next/navigation"
 const Editor = dynamic(() => import('../../Editor'), { 
   ssr: false 
 });
 
 const EditPage = () => {
-    const [image, setImage] = useState()
-    const [imagePre, setImagePre] = useState('')
-    const [value, setValue] = useState("")
-    const [selectedCategory, setSelectedCategory] = useState("")
-    const [text, setText] = useState("")
-    const [note, setNote] = useState("")
+  const [_text, setText_] = useState<any>()
+    const [image, setImage] = useState<any>()
+    const [name, setName] = useState<any>()
+    const [imagePre, setImagePre] = useState<any>()
+    const [value, setValue] = useState<any>()
+    const [selectedCategory, setSelectedCategory] = useState<any>()
+    const [text, setText] = useState<any>()
+    const [note, setNote] = useState<any>()
+    const { toast } = useToast()
+    const {auth} = useContext<any>(AuthContext)
+    const [data, setData] = useState<CategoryType[]>([])
+    const params = useParams()
+    const [loading, setLoading] = useState(false)
 
-    const categories = [
-        {
-          value: "1",
-          label: "Tarih",
-        },
-        {
-          value: "2",
-          label: "Felsefe",
-        },
-        {
-          value: "3",
-          label: "Siyaset",
-        },
-        {
-          value: "4",
-          label: "Din",
-        },
-        {
-          value: "5",
-          label: "Aktüel",
-        },
-    ]
+    useEffect(() => {
+      const getData = async() => {
+        try {
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}article/getText?seo=${params.seo}`)
+          if(res.data.error) {
+            toast({title : res.data.message})
+          } else {
+            setText_(res.data.data)
+            setSelectedCategory(_text?.categoryId)
+          }
+        } catch (error: any) {
+          toast({title : error.response.data.message.split(':')[1] || error.response.data.message})
+        }
+      }
+
+      getData()
+    }, [])
+
+    useEffect(() => {
+      if(_text) {
+        setText(_text?.text)
+        setSelectedCategory(_text?.categoryId)
+        setNote(_text?.note)
+      }
+    }, [_text])
+
+    useEffect(() => {
+      const getData = async() => {
+        try {
+          const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}category/getAll`)
+          if(res.data.error) {
+            toast({title : res.data.message})
+          } else {
+            setData(res.data.data)
+          }
+        } catch (error: any) {
+          toast({title : error.response.data.message.split(':')[1] || error.response.data.message})
+        }
+      }
+
+      getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const categories = 
+        data?.map((_, i) => (
+          {
+            value: _.id,
+            label: _.name,
+          }
+        ))
 
     useEffect(() => {
         if (value) {
-            const category = categories.find((c) => c.label.toLocaleLowerCase() === value.toLocaleLowerCase());
+            const category = categories.find((c) => c?.label?.toLocaleLowerCase() === value.toLocaleLowerCase());
             if (category) {
-                setSelectedCategory(category.value);
+                setSelectedCategory(category?.value);
             }
         }
     }, [categories, value]);
+
+    const handleSubmit = async() => {
+      try {
+          setLoading(true)
+          const token = localStorage.getItem("token")
+          const formData = new FormData()
+          name && formData.append('name', name)
+          formData.append('textImage', image)
+          formData.append('text', text)
+          formData.append('note', note)
+          formData.append('user', _text.userId)
+          formData.append('category', selectedCategory)
+          const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}article/update?seo=${params.seo}`,formData,{
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+            })
+
+            if(res.data.error) {
+              setLoading(false)
+              toast({title : res.data.message})
+            } else {
+              setLoading(false)
+              toast({title : res.data.message})
+              window.location.replace('/')
+            }
+      } catch (error: any) {
+        setLoading(false)
+        toast({title : error.response.data.message.split(':')[1] || error.response.data.message})
+      }
+    }
 
   return (
     <div className="p-8 flex flex-col gap-3 w-full max-h-screen overflow-y-auto">
         <div className="flex flex-col items-center gap-4">
             <div className="w-full h-[260px] relative rounded-xl border border-primary overflow-hidden">
-                {image && <Image alt="" src={imagePre} fill quality={100} priority className="object-cover"/>}
+                <Image alt="" src={imagePre ? imagePre : _text?.image} fill quality={100} priority className="object-cover"/>
                 <span className={`absolute w-full h-full z-10 bg-black/50 flex items-center justify-center 
                 flex-col gap-2 ${image && 'opacity-0'} hover:opacity-100 duration-300 cursor-pointer`}>
                     <ImageIcon/>
@@ -75,7 +146,7 @@ const EditPage = () => {
                     <Label htmlFor="title">
                     Başlık
                     </Label>
-                    <Input id="title" type="text" placeholder="Yazı Başlığı"/>
+                    <Input id="title" type="text" placeholder={_text?.title} onChange={(e) => setName(e.target.value)}/>
                 </div>
                 <div className="shrink-0">
                 <div className="flex flex-col gap-3 w-full">
@@ -115,9 +186,9 @@ const EditPage = () => {
         </div>
 
         <div className="flex justify-end">
-          <Button>
-            Güncelle
-          </Button>
+        <Button onClick={handleSubmit} disabled={loading}>
+                  {loading ? 'Yükleniyor...' : 'Güncelle'}
+            </Button>
         </div>
     </div>
   )
