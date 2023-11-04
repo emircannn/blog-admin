@@ -24,7 +24,7 @@ import {
     button
   })=> {
     return (
-      <AlertDialog action={action}>
+      <AlertDialog>
         <AlertDialogTrigger asChild>
           {button}
         </AlertDialogTrigger>
