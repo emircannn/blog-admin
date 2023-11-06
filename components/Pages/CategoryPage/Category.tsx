@@ -33,9 +33,9 @@ const Category: React.FC<Props> = ({
                 window.location.reload()
                 }
         } catch (error: any) {
-          toast({title : error.response.data.message.split(':')[1] || error.response.data.message})
+            toast({title : error.response.data.message.split(':')[1] || error.response.data.message})
         }
-      }
+    }
 
   return (
     <div className="w-full rounded-xl p-3 backgroundColor aspect-square flex flex-col justify-evenly items-center relative">
@@ -57,7 +57,7 @@ const Category: React.FC<Props> = ({
             <Trash2 size={16} className="dark:text-darkerColor text-white"/>
             </button>
             }
-            title="Bu Kategoriyi silmek istediğinize emin misiniz?"
+            title="Bu kategoriyi silmek istediğinize emin misiniz?"
             desc={`Eğer ${data.name} kategorisini silerseniz, bu kategoriye ait tüm yazılar silinecektir.`}
             />
             

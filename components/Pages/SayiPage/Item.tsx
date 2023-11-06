@@ -59,7 +59,7 @@ const Item: React.FC<Props> = ({
             <Trash2 size={16} className="dark:text-darkerColor text-white"/>
             </button>
             }
-            title="Bu Sayıyı silmek istediğinize emin misiniz?"
+            title="Bu sayıyı silmek istediğinize emin misiniz?"
             desc={`Eğer ${data.title} sayısını silerseniz, bu sayıya ait tüm yazılar silinecektir.`}
             />
         </div>

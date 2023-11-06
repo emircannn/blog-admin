@@ -50,10 +50,10 @@ interface Magazine {
 
 interface Contributions {
     createdAt: string
-    endPage: string
+    endPage: string,
     file: string
-    startPage: string
-    title: string
+    startPage: string,
+    title: string 
     id: string
     user: User
     updatedAt: string
@@ -77,6 +77,7 @@ interface Texts {
     user: User
     categoryId: string
     category: CategoryType
+    isSlider: boolean
 }
 
 interface Actual {
@@ -108,3 +109,13 @@ interface Comment {
     magazineId?: string
     magazine?: Magazine
 }
+
+interface Settings {
+    id: string
+    email?: string
+    phone?: string
+    showReadCount: boolean
+    twitter?: string
+    twitterLink?: string
+    about_us?: string
+  }
