@@ -2,9 +2,11 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Register from "./Auth/Register"
 import AdminLogin from "./Auth/AdminLogin"
 import EditorLogin from "./Auth/EditorLogin"
+import Provider from "./Provider"
 
 const LoginPage = () => {
   return (
+    <Provider>
     <main className="h-[calc(100vh_-_101px)] flex items-center justify-center w-full">
         <Tabs  defaultValue="admin" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-3">
@@ -17,6 +19,7 @@ const LoginPage = () => {
       <Register/>
     </Tabs>
     </main>
+    </Provider>
   )
 }
 

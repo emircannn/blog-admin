@@ -36,8 +36,8 @@ export default function RootLayout({
           <Header/>
           <div className='flex container h-[calc(100vh_-_101px)]'>
             <NavAside/>
-          {children}
           <Toaster />
+          {children}
           </div>
         </ThemeProvider>
         </body>

@@ -1,29 +1,69 @@
+import Confirm from "@/components/AlertDialog"
 import { Button } from "@/components/ui/button"
+import { useToast } from "@/components/ui/use-toast"
+import { dateFormater } from "@/utils/helper"
+import axios from "axios"
 
-const Comment = () => {
+interface Props {
+  data: Comments
+}
+
+const CommentItem: React.FC<Props> = ({
+  data
+}) => {
+
+  const { toast } = useToast()
+  const handleDelete = async () => {
+    try {
+        const token = localStorage.getItem("token")
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}comment/delete?id=${data.id}`, {},{
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+        })
+
+        if(res.data.error) {
+            toast({title : res.data.message})
+            window.location.reload()
+          } else {
+            toast({title : res.data.message})
+            window.location.reload()
+          }
+    } catch (error: any) {
+      toast({title : error.response.data.message.split(':')[1] || error.response.data.message})
+    }
+  }
+
   return (
     <div className="w-full rounded-xl flex flex-col gap-3 p-3 backgroundColor">
         <div className="flex gap-3 flex-col">
-            <h2 className="articleHeading">Lorem ipsum dolor sit amet.</h2>
+            <h2 className="articleHeading">{data.actual?.title || data.text?.title || data.magazine?.title}</h2>
 
             <p className="text-sm">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta, architecto? Quaerat accusamus officiis laborum libero expedita perspiciatis, incidunt rem quis.
+              {data.comment}
             </p>
             
             <div className="flex items-center gap-3 flex-wrap">
-            <p className="text-sm font-semibold">Emircan Yaşar</p>
-            <p className="text-xs font-semibold opacity-75">yasar.emircann@gmail.com</p>
-            <span className="text-xs">25/09/2023</span>
+            <p className="text-sm font-semibold">{data?.name}</p>
+            <p className="text-xs font-semibold opacity-75">{data?.email}</p>
+            <span className="text-xs">{dateFormater(data?.createdAt)}</span>
             </div>
 
             <div>
-            <Button variant='destructive'>
+            
+            <Confirm
+            action={handleDelete}
+            button={
+              <Button variant='destructive'>
                 Sil
-            </Button>
+              </Button>
+            }
+            title="Bu yorumu silmek istediğinize emin misiniz?"
+            />
             </div>
         </div>
     </div>
   )
 }
 
-export default Comment
+export default CommentItem

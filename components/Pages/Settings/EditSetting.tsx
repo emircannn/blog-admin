@@ -21,7 +21,10 @@ const EditSettings: React.FC<Props> = ({
     twitter : data?.twitter,
     twitterLink : data?.twitterLink,
     email: data?.email,
-    phone: data?.phone
+    phone: data?.phone,
+    instagram: data?.instagram,
+    instagramLink: data?.instagramLink,
+    patreon: data?.patreon,
   })
 
   const handleUpdate = async () => {
@@ -31,6 +34,9 @@ const EditSettings: React.FC<Props> = ({
             twitterLink: form.twitterLink,
             email: form.email,
             phone: form.phone,
+            instagram: form.instagram,
+            instagramLink: form.instagramLink,
+            patreon: form.patreon,
         }
         const token = localStorage.getItem("token")
         const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}settings/update?id=${data?.id}`, formBody, {
@@ -73,6 +79,19 @@ const EditSettings: React.FC<Props> = ({
                 </Label>
                 <Input placeholder={data?.twitter || 'Kullanıcı Adı'} value={form.twitter} onChange={(e) => setForm({...form, twitter: e.target.value})}/>
                 <Input placeholder={data?.twitterLink || 'Link'} value={form.twitterLink} onChange={(e) => setForm({...form, twitterLink: e.target.value})}/>
+            </div>
+            <div className="flex flex-col gap-4">
+                <Label htmlFor="twitter">
+                Instagram
+                </Label>
+                <Input placeholder={data?.instagram || 'Kullanıcı Adı'} value={form.instagram} onChange={(e) => setForm({...form, instagram: e.target.value})}/>
+                <Input placeholder={data?.instagramLink || 'Link'} value={form.instagramLink} onChange={(e) => setForm({...form, instagramLink: e.target.value})}/>
+            </div>
+            <div className="flex flex-col gap-4">
+                <Label htmlFor="twitter">
+                Patreon Linki
+                </Label>
+                <Input placeholder={data?.patreon || 'Link'} value={form.patreon} onChange={(e) => setForm({...form, patreon: e.target.value})}/>
             </div>
             <div className="flex flex-col gap-4">
                 <Label htmlFor="twitter">
