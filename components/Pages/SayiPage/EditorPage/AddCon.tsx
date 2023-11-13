@@ -55,7 +55,7 @@ const AddCon = () => {
   const handleSubmit = async() => {
     try {
         setLoading(true);
-        if(form.file && form.title && form.startPage && form.magazineId && form.endPage) {
+        if(form.file && form.title && form.magazineId && form.endPage) {
             const token = localStorage.getItem("token")
             const formData = new FormData()
             formData.append('endPage', form.endPage)

@@ -50,7 +50,7 @@ const Item: React.FC<Props> = ({
         </span>
 
         <div className="absolute top-2 right-2 flex items-center gap-2">
-            <ShowTexts data={data?.contributions}/>
+            <ShowTexts seo={data?.seo}/>
             <Edit data={data}/>
             <Confirm
             action={handleDelete}
@@ -66,12 +66,12 @@ const Item: React.FC<Props> = ({
 
         </div>
 
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center justify-between gap-3">
         <Link href={data?.file ? data.file : '/'} target="_blank" className="articleHeading hover:underline !line-clamp-1">
             {data.title}
         </Link>
 
-        <span className="text-xs font-semibold opacity-60">{formatReadCount(data.readCount)} okunma</span>
+        <span className="text-xs font-semibold opacity-60 shrink-0">{formatReadCount(data.readCount)} okunma</span>
         </div>
     </div>
   )

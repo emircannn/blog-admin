@@ -6,6 +6,7 @@ import Yazi from "./Yazi"
 import { useToast } from "@/components/ui/use-toast"
 import { AuthContext } from "@/context/AuthContext"
 import axios from "axios"
+import Pagination from "@/components/Pagination"
 
 const EditorPage = () => {
 
@@ -50,6 +51,15 @@ const EditorPage = () => {
                     <Yazi key={i} data={_}/>
                   ))}
             </div>
+
+            {totalPages > 1 &&
+              <div className="flex justify-center">
+                <Pagination
+                  siblingCount={4}
+                  onPageChange={setPage}
+                  totalPages={totalPages}
+                />
+            </div>}
     </div>
   )
 }

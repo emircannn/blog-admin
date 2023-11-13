@@ -32,6 +32,7 @@ interface CategoryType {
     createdAt: string 
     updatedAt: string 
     articles: Texts[]
+    articleCount: number
 }
 
 interface Magazine {

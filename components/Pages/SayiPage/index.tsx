@@ -23,6 +23,9 @@ const SayiPage = () => {
           const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}magazine/all?page=${page}`)
           if(res.data.error) {
             toast({title : res.data.message})
+          } else {
+            setData(res.data.data)
+            setTotalPages(res.data.totalPages)
           }
         }
       } catch (error: any) {

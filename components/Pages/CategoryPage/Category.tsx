@@ -45,7 +45,7 @@ const Category: React.FC<Props> = ({
 
         <div className="flex flex-col gap-1 items-center">
         <h6 className="text-sm font-semibold sm:text-base hover:underline duration-300">{data.name}</h6>
-        <p className="text-xs sm:text-sm font-medium opacity-60">{data.articles.length} Yazı</p>
+        <p className="text-xs sm:text-sm font-medium opacity-60">{data.articleCount} Yazı</p>
         </div>
 
         <div className="absolute top-2 right-2 flex items-center gap-2">

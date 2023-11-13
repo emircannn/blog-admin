@@ -30,7 +30,7 @@ const EditCategory: React.FC<Props> = ({
   const [loading, setLoading] = useState(false)
   const [image, setImage] = useState<any>()
   const [imagePre, setImagePre] = useState(data?.image)
-  const [name, setName] = useState(data?.name)
+  const [name, setName] = useState<any>()
 
   const handleEdit = async () => {
     try {
@@ -39,7 +39,7 @@ const EditCategory: React.FC<Props> = ({
         const token = localStorage.getItem("token")
       const formData = new FormData()
       formData.append('image', image)
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}category/edit?seo=${data?.seo}${name && `&name=${name}`}`, formData,{
+      const res = await axios.put(`${process.env.NEXT_PUBLIC_URL}category/edit?seo=${data?.seo}${name && `&name=${name}`}`, formData,{
       headers: {
           'Authorization': `Bearer ${token}`,
       },
@@ -97,7 +97,7 @@ const EditCategory: React.FC<Props> = ({
             </Label>
             <Input
               id="category"
-              placeholder="Bir şeyler yazın..."
+              placeholder={data.name}
               onChange={(e) => setName(e.target.value)}
               value={name}
             />

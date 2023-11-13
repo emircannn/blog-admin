@@ -71,7 +71,7 @@ const EditPage = () => {
               toast({title : res.data.message})
             } else {
               toast({title : res.data.message})
-              window.location.replace('/')
+              window.location.replace('/aktuel')
             }
       } catch (error: any) {
         toast({title : error.response.data.message.split(':')[1] || error.response.data.message})

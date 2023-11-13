@@ -38,7 +38,7 @@ interface Props {
         try {
             setLoading(true)
         const token = localStorage.getItem("token")
-        const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}settings/update?id=${data?.id}`, {about: about}, {
+        const res = await axios.post(`${process.env.NEXT_PUBLIC_URL}settings/update?id=${data?.id}`, {about_us: about}, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',

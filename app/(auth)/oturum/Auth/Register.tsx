@@ -32,6 +32,7 @@ const Register = () => {
         }
       }
       else {
+        setLoading(false)
         toast({title : "Şifreniz eşleşmiyor"})
       }
     } 
